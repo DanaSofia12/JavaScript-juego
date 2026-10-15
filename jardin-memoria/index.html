@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jardín de Memoria Y2K</title>
+  <link rel="icon" href="img/corazon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Decoración de fondo -->
+  <div class="fondo" aria-hidden="true">
+    <img src="img/destello.svg" class="deco deco--1" alt="">
+    <img src="img/corazon.svg" class="deco deco--2" alt="">
+    <img src="img/destello.svg" class="deco deco--3" alt="">
+    <img src="img/corazon.svg" class="deco deco--4" alt="">
+    <img src="img/destello.svg" class="deco deco--5" alt="">
+  </div>
+
+  <main class="ventana">
+    <header class="ventana__titulo">
+      <span>✿ jardín de memoria.exe</span>
+      <div class="ventana__botones">
+        <button class="btn-mini" id="btnSonido" title="Silenciar sonido" aria-label="Silenciar sonido">♪</button>
+        <button class="btn-mini btn-mini--cerrar" id="btnReiniciarTop" title="Reiniciar" aria-label="Reiniciar">✕</button>
+      </div>
+    </header>
+
+    <nav class="ventana__menu">
+      <button class="menu__item" data-accion="inicio">Inicio</button>
+      <button class="menu__item" data-accion="ayuda">Ayuda</button>
+      <div class="menu__url">https://jardin-memoria.y2k</div>
+    </nav>
+
+    <div class="ventana__cuerpo">
+      <!-- Panel lateral -->
+      <aside class="panel">
+        <h1 class="panel__nombre">MEMORIA</h1>
+        <p class="panel__subtitulo">encuentra los pares</p>
+
+        <div class="panel__avatar">
+          <img src="img/girasol.svg" alt="Girasol sonriente" id="avatar">
+        </div>
+
+        <ul class="stats">
+          <li class="stat"><span class="stat__icono">✦</span>Movimientos <strong id="movimientos">0</strong></li>
+          <li class="stat"><span class="stat__icono">◷</span>Tiempo <strong id="tiempo">00:00</strong></li>
+          <li class="stat"><span class="stat__icono">♥</span>Pares <strong id="pares">0/8</strong></li>
+          <li class="stat"><span class="stat__icono">★</span>Récord <strong id="record">--</strong></li>
+        </ul>
+
+        <div class="niveles" role="group" aria-label="Dificultad">
+          <button class="nivel" data-nivel="facil">Fácil</button>
+          <button class="nivel activo" data-nivel="normal">Normal</button>
+          <button class="nivel" data-nivel="dificil">Difícil</button>
+        </div>
+      </aside>
+
+      <!-- Zona de juego -->
+      <section class="juego">
+        <div class="juego__cabecera">
+          <img src="img/corazon.svg" alt="" class="juego__icono">
+          <h2>¡HOLA!</h2>
+        </div>
+        <p class="mensaje" id="mensaje">Dale a Press Start para comenzar ♡</p>
+
+        <div class="tablero" id="tablero"></div>
+
+        <ul class="coleccion" id="coleccion" aria-label="Plantas encontradas"></ul>
+
+        <!-- Pantalla de inicio -->
+        <div class="inicio" id="pantallaInicio">
+          <div class="monitor">
+            <div class="monitor__pantalla">
+              <span class="monitor__y2k">Y2K</span>
+              <span>MEMORY</span>
+              <span>GARDEN</span>
+            </div>
+            <div class="monitor__base"><i></i><i></i></div>
+          </div>
+          <button class="btn-start" id="btnStart">Press Start!</button>
+        </div>
+      </section>
+    </div>
+
+    <footer class="ventana__pie">
+      <button class="btn-pill" id="btnReiniciar">↻ Reiniciar</button>
+      <button class="btn-pill" id="btnAyuda">? Cómo jugar</button>
+    </footer>
+  </main>
+
+  <!-- Modal de victoria -->
+  <div class="modal" id="modalVictoria" hidden>
+    <div class="modal__ventana">
+      <header class="ventana__titulo">
+        <span>♡ ¡ganaste!</span>
+        <button class="btn-mini btn-mini--cerrar" data-cerrar aria-label="Cerrar">✕</button>
+      </header>
+      <div class="modal__contenido">
+        <p class="estrellas" id="estrellas"></p>
+        <h3>¡Jardín completo!</h3>
+        <p id="resumen"></p>
+        <button class="btn-start" id="btnOtraVez">Jugar otra vez</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de ayuda -->
+  <div class="modal" id="modalAyuda" hidden>
+    <div class="modal__ventana">
+      <header class="ventana__titulo">
+        <span>? cómo jugar</span>
+        <button class="btn-mini btn-mini--cerrar" data-cerrar aria-label="Cerrar">✕</button>
+      </header>
+      <div class="modal__contenido modal__contenido--texto">
+        <p>1. Toca una carta para voltearla.</p>
+        <p>2. Toca otra: si es la misma planta, ¡es un par!</p>
+        <p>3. Si no coinciden, se vuelven a esconder.</p>
+        <p>4. Encuentra todos los pares con los menos movimientos posibles.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
